@@ -1,6 +1,6 @@
 name: Build and publish docker image
 on:
-  [workflow_dispatch]     #trigger manually
+  workflow_dispatch:     #trigger manually
 
 # on:                   #consider in a future once repo pushes are stable
 #   push:
