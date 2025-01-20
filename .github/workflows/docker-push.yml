@@ -1,0 +1,25 @@
+name: Build and publish docker image
+on:
+  [workflow_dispatch]     #trigger manually
+
+# on:                   #consider in a future once repo pushes are stable
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'docker/nvidia/Dockerfile'
+#       - 'CMD_FLAGS.txt'
+
+jobs:
+  publish_image:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build image
+        run: docker build -f ./docker/nvidia/Dockerfile -t wiktoria02/test-image-pipeline:latest .
+      - name: push img to docker hub
+        run: |
+          docker login -u wiktoria02 -p ${{secrets.DOCKERHUB_ACCESS_TOKEN}}
+          docker push wiktoria02/test-image-pipeline:latest
+                
