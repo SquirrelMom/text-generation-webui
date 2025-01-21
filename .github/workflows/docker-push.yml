@@ -21,5 +21,5 @@ jobs:
       - name: push img to docker hub
         run: |
           docker login -u wiktoria02 -p ${{secrets.DOCKERHUB_ACCESS_TOKEN}}
-          docker push wiktoria02/text-generation-cuda:latest
+          docker push wiktoria02/text-generation:latest
                 
