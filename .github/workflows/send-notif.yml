@@ -6,13 +6,13 @@ jobs:
   check_directory:
     runs-on: ubuntu-latest
     outputs:
-      file_missing: ${{ steps.file.outputs.file_missing}}
+      file_missing: ${{ steps.file_check.outputs.file_missing}}
     steps:
       - name: checkout
         uses: actions/checkout@v4
 
       - name: check directory
-        id: file
+        id: file_check
         run: |
           FILE_PATH="characters/Dockerfile"
           FILE_MISSING=false
@@ -20,9 +20,8 @@ jobs:
             echo "File FOUND. All good."
           else
             echo "File NOT FOUND. Email will be sent."
-            echo "FILE_MISSING=true" >> $GITHUB_ENV
+            echo "FILE_MISSING=true" >> "$GITHUB_OUTPUT"
           fi
-          echo "file_missing=$FILE_MISSING" >> "$GITHUB_OUTPUT"
           
   send_email:
     runs-on: ubuntu-latest
@@ -31,7 +30,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-    
       - name: set up Python
         uses: actions/setup-python@v2
         with:
