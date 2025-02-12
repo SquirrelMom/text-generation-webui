@@ -1,5 +1,8 @@
 name: Check directory and send an email
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:     #trigger manually
 
 jobs:
@@ -14,7 +17,7 @@ jobs:
       - name: check directory
         id: file_check
         run: |
-          FILE_PATH="characters/Dockerfile"
+          FILE_PATH="CMD_FLAGS.txt"
           FILE_MISSING=false
           if [[ -f "$FILE_PATH" ]]; then
             echo "File FOUND. All good."
