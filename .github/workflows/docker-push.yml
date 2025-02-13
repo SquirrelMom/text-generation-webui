@@ -1,14 +1,9 @@
 name: Build and publish docker image
 on:
   workflow_dispatch:     #trigger manually
-
-# on:                   #consider in a future once repo pushes are stable
-#   push:
-#     branches:
-#       - main
-#     paths:
-#       - 'docker/nvidia/Dockerfile'
-#       - 'CMD_FLAGS.txt'
+  push:
+    paths:
+      - 'docker/nvidia/Dockerfile'
 
 jobs:
   publish_image:
