@@ -7,9 +7,9 @@ USERNAME = os.environ.get('EMAIL')
 PASSWORD = os.environ.get('PSWRD')
 
 message = """\
-Subject: Email sent from GitHub
+Subject: Email wysłany z GitHub Actions workflow
 
-I was sent by GitHub Actions workflow!
+Uwaga! Nie znaleziono pliku CMD_FLAGS!
 """
 
 context = ssl.create_default_context()
