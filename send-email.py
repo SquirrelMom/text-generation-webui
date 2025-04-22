@@ -7,7 +7,7 @@ USERNAME = os.environ.get('EMAIL')
 PASSWORD = os.environ.get('PSWRD')
 
 message = """\
-Subject: Email wysłany z GitHub Actions workflow
+Subject: Email wyslany z GitHub Actions workflow
 
 Uwaga! Nie znaleziono pliku CMD_FLAGS!
 """
